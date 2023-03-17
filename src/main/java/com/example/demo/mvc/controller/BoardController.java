@@ -68,9 +68,9 @@ public class BoardController {
 		@ApiImplicitParam(name = "title", value = "제목", example = "spring"),
 		@ApiImplicitParam(name = "contents", value = "내용", example = "spring 강좌")
 	})
-	public int save(BoardParameter parameter) {
+	public BaseResponse<Integer> save(BoardParameter parameter) {
 		boardService.save(parameter);
-		return parameter.getBoardSeq();
+		return new BaseResponse<Integer>(parameter.getBoardSeq());
 	}
 	
 	/**
@@ -82,13 +82,13 @@ public class BoardController {
 	@ApiImplicitParams({
 		@ApiImplicitParam(name = "boardSeq", value = "게시물 번호", example = "1"),
 	})
-	public boolean delete(@PathVariable int boardSeq) {
+	public BaseResponse<Boolean> delete(@PathVariable int boardSeq) {
 		Board board = boardService.get(boardSeq);
 		if(board == null) {
-			return false;
+			return new BaseResponse<Boolean>(false);
 		}
 		boardService.delete(boardSeq);
-		return true;
+		return new BaseResponse<Boolean>(true);
 	}
 
 }
