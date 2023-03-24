@@ -1,6 +1,6 @@
 package com.example.demo.configuration.exception;
 
-import com.example.demo.mvc.configuration.http.BaseResponseCode;
+import com.example.demo.configuration.http.BaseResponseCode;
 
 public abstract class AbstractBaseException extends RuntimeException {
 	

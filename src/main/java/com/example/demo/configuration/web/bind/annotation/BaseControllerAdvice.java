@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 
 import com.example.demo.configuration.exception.BaseException;
-import com.example.demo.mvc.configuration.http.BaseResponse;
+import com.example.demo.configuration.http.BaseResponse;
 
 @ControllerAdvice
 public class BaseControllerAdvice {

@@ -1,4 +1,4 @@
-package com.example.demo.mvc.configuration.http;
+package com.example.demo.configuration.http;
 
 import lombok.Data;
 

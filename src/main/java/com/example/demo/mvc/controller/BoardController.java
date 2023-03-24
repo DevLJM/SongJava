@@ -2,6 +2,8 @@ package com.example.demo.mvc.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.configuration.exception.BaseException;
-import com.example.demo.mvc.configuration.http.BaseResponse;
-import com.example.demo.mvc.configuration.http.BaseResponseCode;
+import com.example.demo.configuration.http.BaseResponse;
+import com.example.demo.configuration.http.BaseResponseCode;
 import com.example.demo.mvc.domain.Board;
 import com.example.demo.mvc.parameter.BoardParameter;
 import com.example.demo.mvc.service.BoardService;
@@ -33,6 +35,8 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags = "게시판 API")
 public class BoardController {
 	
+	Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Autowired
 	private BoardService boardService;
 	
@@ -43,6 +47,7 @@ public class BoardController {
 	@GetMapping
 	@ApiOperation(value = "목록 조회", notes = "게시물 목록 정보를 조회할 수 있습니다.")
 	public BaseResponse<List<Board>> getList() {
+		logger.info("getList");
 		return new BaseResponse<List<Board>>(boardService.getList());
 	}
 	
