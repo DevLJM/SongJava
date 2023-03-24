@@ -7,8 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.framework.data.domain.PageRequestParameter;
 import com.example.demo.mvc.domain.Board;
 import com.example.demo.mvc.parameter.BoardParameter;
+import com.example.demo.mvc.parameter.BoardSearchParameter;
 import com.example.demo.mvc.repository.BoardRepository;
 
 /**
@@ -26,8 +28,8 @@ public class BoardService {
 	 * 등록 리턴
 	 * @return
 	 */
-	public List<Board> getList() {
-		return repository.getList();
+	public List<Board> getList(/*PageRequestParameter<BoardSearchParameter> pageRequestParameter*/) {
+		return repository.getList(/* pageRequestParameter */);
 	}
 	
 	/**
