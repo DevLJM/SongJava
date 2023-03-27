@@ -28,8 +28,8 @@ public class BoardService {
 	 * 등록 리턴
 	 * @return
 	 */
-	public List<Board> getList(/*PageRequestParameter<BoardSearchParameter> pageRequestParameter*/) {
-		return repository.getList(/* pageRequestParameter */);
+	public List<Board> getList(BoardSearchParameter parameter) {
+		return repository.getList(parameter);
 	}
 	
 	/**

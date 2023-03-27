@@ -18,7 +18,7 @@ import com.example.demo.mvc.parameter.BoardSearchParameter;
 @Repository
 public interface BoardRepository {
 	
-	List<Board> getList(/* PageRequestParameter<BoardSearchParameter> pageRequestParameter */);
+	List<Board> getList(BoardSearchParameter parameter);
 	
 	Board get(int boardSeq);
 	

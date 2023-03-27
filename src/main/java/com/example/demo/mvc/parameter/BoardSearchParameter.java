@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class BoardSearchParameter {
 	private String keyword;
-	private List<BoardType> boardTypes;
+	//private List<BoardType> boardTypes;
 	
 	public BoardSearchParameter() {
 		
