@@ -23,7 +23,7 @@ public enum BoardType implements BaseCodeLabelEnum {
 	
 	NOTICE("공지사항"),
 	FAQ("자주묻는질문"),
-	INQUIRY("1:1문의")
+	INQUIRY("1:1문의"),
 	;
 	
 	private String code;

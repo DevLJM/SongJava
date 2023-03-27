@@ -25,7 +25,7 @@ public class BoardService {
 	private BoardRepository repository;
 	
 	/**
-	 * 등록 리턴
+	 * 목록 리턴
 	 * @return
 	 */
 	public List<Board> getList(BoardSearchParameter parameter) {
