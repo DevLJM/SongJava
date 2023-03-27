@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.demo.mvc.repository.BoardRepository">
-	<select id="getList" parameterType="com.example.demo.mvc.parameter.BoardSearchParameter" resultType="com.example.demo.mvc.domain.Board">
+	<select id="getList" parameterType="com.example.demo.framework.data.domain.PageRequestParameter" resultType="com.example.demo.mvc.domain.Board">
 		SELECT
 			B.BOARD_SEQ
 			, B.BOARD_TYPE
@@ -12,21 +12,22 @@
 		FROM T_BOARD B 
 		<where>
 			<!-- 키워드 검색 -->
-<!--	과거:	<if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(keyword)">-->
-			<if test="keyword != null">
-				AND B.TITLE LIKE CONCAT('%', #{keyword}, '%') 
+<!--	과거:	<if test="@org.apache.commons.lang3.StringUtils@isNotEmpty(parameter.keyword)">-->
+			<if test="parameter.keyword != null">
+				AND B.TITLE LIKE CONCAT('%', #{parameter.keyword}, '%') 
 			</if>
 			<!-- 게시판 종류 배열 검색 -->
-<!--	과거:	<if test="@org.apache.commons.lang3.ObjectUtils@isNotEmpty(boardTypes)">-->
-			<if test="boardTypes != null">
+<!--	과거:	<if test="@org.apache.commons.lang3.ObjectUtils@isNotEmpty(parameter.boardTypes)">-->
+			<if test="parameter.boardTypes != null">
 				AND B.BOARD_TYPE IN (
-					<foreach collection="boardTypes" item="value" separator=",">
+					<foreach collection="parameter.boardTypes" item="value" separator=",">
 						#{value}
 					</foreach>
 				) 
 			</if>
 		</where>
 		ORDER BY B.REG_DATE DESC
+		LIMIT #{pageRequest.limit}, #{pageRequest.offset}
 	</select>
 	
 	<select id="get" parameterType="int" resultType="com.example.demo.mvc.domain.Board">
